@@ -27,9 +27,7 @@ async def on_message(message):
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!', reference=message)
 
-
-    if message.content.startswith(f'{PREFIX}가챠'):
-        
+    elif message.content.startswith(f'{PREFIX}가챠'):
         await message.channel.send('뾰로롱...!', reference=message)
 
 
