@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 import random
+import gacha
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
@@ -27,13 +28,11 @@ async def on_message(message):
         await message.channel.send('Hello!', reference=message)
 
 @client.event
-async def gacha(message):
+async def random_gacha(message):
     if message.content.startswith(f'{PREFIX}가챠'):
-        items = ['A','B','C','D']
-
-        index = random.randrange(0,len(items))
-        item = items[index]
-        await message.channel.send(f'뾰로롱...! {item}이(가) 나왔다!', reference=message)
+        gacha_result=gacha.getGacha()
+        gacha_message='뾰로롱...! <'+gacha_result+'>이(가) 나왔다!'
+        await message.channel.send(gacha_message, reference=message)
 
 
 try:
