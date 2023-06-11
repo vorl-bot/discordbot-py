@@ -30,9 +30,8 @@ async def on_message(message):
 @client.event
 async def random_gacha(message):
     if message.content.startswith(f'{PREFIX}가챠'):
-        gacha_result=gacha.getGacha()
-        gacha_message='뾰로롱...! <'+gacha_result+'>이(가) 나왔다!'
-        await message.channel.send(gacha_message, reference=message)
+        
+        await message.channel.send('뾰로롱...!', reference=message)
 
 
 try:
