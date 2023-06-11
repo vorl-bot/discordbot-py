@@ -4,6 +4,7 @@ import discord
 from dotenv import load_dotenv
 import os
 load_dotenv()
+import random
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
@@ -24,6 +25,15 @@ async def on_message(message):
 
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!', reference=message)
+
+@client.event
+async def gacha(message):
+    if message.content.startswith(f'{PREFIX}가챠'):
+        items = ['A','B','C','D']
+
+        index = random.randrange(0,len(items))
+        item = items[index]
+        await message.channel.send(f'뾰로롱...! {item}이(가) 나왔다!', reference=message)
 
 
 try:
