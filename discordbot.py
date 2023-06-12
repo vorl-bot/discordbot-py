@@ -6,6 +6,7 @@ import os
 load_dotenv()
 import random
 import gacha
+import stew
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
@@ -36,9 +37,17 @@ async def on_message(message):
     #다이스(1d100)
     if message.content.startswith(f'{PREFIX}다이스'):
         d = random.randrange(1,101)
-        embed=discord.Embed(description=":game_die:도르르륵... 챠킹!",
+        embed = discord.Embed(description=":game_die:도르르륵... 챠킹!",
                             color=0x000000)
-        embed.add_field(name=d, value=" ", inline=True)
+        embed.add_field(name=d, value=" ", inline=False)
+        await message.channel.send(embed=embed, reference=message)
+
+    #스튜
+    if message.content.startswith(f'{PREFIX}스튜'):
+        stew_result = stew.getStew()
+        embed = discord.Embed(title="맛있는 만년 스튜!", 
+                              description="어떤 맛일까? 한 그릇 떠 담으면, 이것은...")
+        embed.add_field(name=":stew:"+stew, value=" ", inline=False)
         await message.channel.send(embed=embed, reference=message)
 
 

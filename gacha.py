@@ -21,7 +21,6 @@ items = ['히어로 만화책','모형 하우스 DIY','운동 보호구',
          '방울토마토','성냥','지폐 다발']
 
 def getGacha():
-    index = random.randrange(0,len(items))
-    item = items[index]
+    item = random.choice(items)
 
     return item
