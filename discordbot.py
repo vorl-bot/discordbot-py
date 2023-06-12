@@ -48,7 +48,7 @@ async def on_message(message):
         embed = discord.Embed(title="맛있는 만년 스튜!", 
                               description="어떤 맛일까? 한 그릇 떠 담으면, 이것은...", 
                               color=0xe34f4f)
-        embed.add_field(name=":stew:"+stew, value=" ", inline=False)
+        embed.add_field(name=":stew:"+stew_result, value=" ", inline=False)
         await message.channel.send(embed=embed, reference=message)
 
 
