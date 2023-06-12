@@ -27,10 +27,19 @@ async def on_message(message):
     if message.content.startswith(f'{PREFIX}hello'):
         await message.channel.send('Hello!', reference=message)
 
+    #가챠
     if message.content.startswith(f'{PREFIX}가챠'):
-        gacha_result=gacha.getGacha()
-        gacha_message='뾰로롱...! <'+gacha_result+'>이(가) 나왔다!'
+        gacha_result = gacha.getGacha()
+        gacha_message = '뾰로롱...! <'+gacha_result+'>이(가) 나왔다!'
         await message.channel.send(gacha_message, reference=message)
+
+    #다이스(1d100)
+    if message.content.startswith(f'{PREFIX}다이스'):
+        d = random.randrange(1,101)
+        embed=discord.Embed(description=":game_die:도르르륵... 챠킹!",
+                            color=0x000000)
+        embed.add_field(name=d, value=" ", inline=True)
+        await message.channel.send(embed=embed, reference=message)
 
 
 try:
