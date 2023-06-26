@@ -7,6 +7,7 @@ load_dotenv()
 import random
 import gacha
 import stew
+import member
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
@@ -49,6 +50,14 @@ async def on_message(message):
                               description="어떤 맛일까? 한 그릇 떠 담으면, 이것은...", 
                               color=0xe34f4f)
         embed.add_field(name=":stew:"+stew_result, value=" ", inline=False)
+        await message.channel.send(embed=embed, reference=message)
+
+    #루치 스킬
+    if message.content.startswith(f'{PREFIX}루치'):
+        luchei_result = member.LucheiSkill()
+        embed = discord.Embed(title="루치 스킬 사용 대상",
+                              description=luchei_result,
+                              color=discord.Color.orange())
         await message.channel.send(embed=embed, reference=message)
 
 
