@@ -52,11 +52,11 @@ async def on_message(message):
         embed.add_field(name=":stew:"+stew_result, value=" ", inline=False)
         await message.channel.send(embed=embed, reference=message)
 
-    #루치 스킬
-    if message.content.startswith(f'{PREFIX}루치'):
-        luchei_result = member.LucheiSkill()
-        embed = discord.Embed(title="루치 스킬 사용 대상",
-                              description=luchei_result,
+    #랜덤멤버
+    if message.content.startswith(f'{PREFIX}랜덤'):
+        member_result = member.selectmember()
+        embed = discord.Embed(title="랜덤 멤버",
+                              description=member_result,
                               color=discord.Color.orange())
         await message.channel.send(embed=embed, reference=message)
 
