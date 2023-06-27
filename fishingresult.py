@@ -1,6 +1,5 @@
 import fishing
 fish_result = fishing.getFish()
-fsize = fishing.sizing()
 text1 =''
 text2 =''
 
@@ -27,6 +26,8 @@ def fisht1():
         
 
 def fisht2():
+    fsize = fishing.sizing()
+    
     if fish_result == '실패':
         text2 = '물고기가 도망갔다. 아무것도 낚지 못했다...'
 
