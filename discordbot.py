@@ -8,6 +8,7 @@ import random
 import gacha
 import stew
 import member
+import fishing
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
@@ -59,6 +60,41 @@ async def on_message(message):
                               description=member_result,
                               color=discord.Color.orange())
         await message.channel.send(embed=embed, reference=message)
+
+    #낚시
+    if message.content.startswith(f'{PREFIX}낚시'):
+        fish_result = fishing.getFish()
+        fsize = fishing.sizing()
+
+        if fish_result == '실패':
+            text1 = '이런!'
+            text2 = '물고기가 도망갔다. 아무것도 낚지 못했다...'
+
+        elif fish_result == '직박구리 씨':
+            text1 = '바닷속을 점검하던 직박구리 씨?!'
+            text2 = '\"삐이이익!!!! 파티서펀트!!!!! 이것은 공무집행방해입니다!!!!\" 직박구리 씨는 호통을 치고 날아갔다...'
+
+        elif fish_result == '쓰레기' or '돌멩이' or '1아티' or '유리병':
+            text1 = fish_result+'을(를) 낚았다!'
+            text2 = '물고기가 아니잖아!'
+        
+        elif fish_result == '고래상어' or '철갑상어' or '실러캔스' or '피라루쿠' or '청상아리' or '청새치' or '킹크랩' or '거대오징어' or '크라켄' or '대왕참치':
+            fsize = fsize + 100
+
+            text1 = fish_result+'을(를) 낚았다!'
+            text2 = '성과 기록: 무려 '+fsize+'cm?!'
+        
+        else:
+            text1 = fish_result+'을(를) 낚았다!'
+            text2 = '성과 기록: '+fsize+'cm'
+
+        embed = discord.Embed(title = '즐거운 낚시 시간!',
+                              description = '낚싯대를 잡아당기면...',
+                              color = discord.Color.blue)
+        embed.add_field(name = text1, value = text2, inline=False)
+
+        await message.channel.send(embed=embed, reference=message)
+
 
 
 try:
