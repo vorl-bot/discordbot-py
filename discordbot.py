@@ -71,7 +71,7 @@ async def on_message(message):
 
         embed = discord.Embed(title = '즐거운 낚시 시간!',
                               description = '낚싯대를 잡아당기면...',
-                              color = discord.Color.blue)
+                              color = discord.Color.blue())
         embed.add_field(name = text1, value = text2, inline=False)
 
         await message.channel.send(embed=embed, reference=message)
