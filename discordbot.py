@@ -64,8 +64,10 @@ async def on_message(message):
     #낚시
     if message.content.startswith(f'{PREFIX}낚시'):
         
-        text1 = fishingresult.fisht1()
-        text2 = fishingresult.fisht2()
+        fish = fishingresult.fishresult()
+
+        text1 = fish[0]
+        text2 = fish[1]        
 
         fishingmessage = text1 + text2
 
