@@ -1,10 +1,11 @@
 import fishing
-fish_result = fishing.getFish()
 text1 =''
 text2 =''
 
 
 def fisht1():
+    fish_result = fishing.getFish()
+    
     if fish_result == '실패':
         text1 = '이런!'
 
