@@ -76,6 +76,25 @@ async def on_message(message):
 
         await message.channel.send(embed=embed, reference=message)
 
+    #복권
+    if message.content.startswith(f'{PREFIX}복권'):
+        lotto = []
+        ltext = ''
+        while len(lotto) < 3:
+            number = str(random.randrange(1,10))
+            newnum = list(number)
+            lotto = lotto+newnum
+            ltext = ltext+number
+
+        embed=discord.Embed(title=':dollar:'+'일일복권', 
+                            description="결과: "+ltext, 
+                            color=0x89fb9c)
+        embed.add_field(name="", value="", inline=False)
+        
+        await message.channel.send(embed=embed, reference=message)
+
+        
+
 
 
 try:
