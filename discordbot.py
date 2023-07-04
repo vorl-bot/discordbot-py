@@ -9,6 +9,8 @@ import gacha
 import stew
 import member
 import fishingresult
+import shoot
+import alcohol
 
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
@@ -92,7 +94,29 @@ async def on_message(message):
                 
         await message.channel.send(embed=embed, reference=message)
 
-        
+    #사격
+    if message.content.startswith(f'{PREFIX}사격'):
+
+        shooting = shoot.shootingresult()
+
+        st1 = shooting[0]
+        st2 = shooting[1]
+
+        embed = discord.Embed(title = '사격 결과',
+                              description = '',
+                              color = discord.Color.dark_magenta())
+        embed.add_field(name = st1, value = st2, inline=False)
+
+        await message.channel.send(embed=embed, reference=message)
+
+    #술
+    if message.content.startswith(f'{PREFIX}주류'):
+        alcohol_result = alcohol.bar()
+        embed = discord.Embed(title="바텐더의 추천 메뉴!", 
+                              description="바텐더는 당신의 앞에 잔을 하나 내려놓았다...", 
+                              color=discord.Color.gold())
+        embed.add_field(name=":cocktail:"+alcohol_result, value="", inline=False)
+        await message.channel.send(embed=embed, reference=message)
 
 
 
