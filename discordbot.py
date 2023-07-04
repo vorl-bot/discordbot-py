@@ -89,8 +89,7 @@ async def on_message(message):
         embed=discord.Embed(title=':dollar:'+'일일복권', 
                             description="결과: "+ltext, 
                             color=0x89fb9c)
-        embed.add_field(name="", value="", inline=False)
-        
+                
         await message.channel.send(embed=embed, reference=message)
 
         
